@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#315a43">
+<title>Sazón y Punto | Recetas para cada día</title>
+<meta name="description" content="Recetas caseras, ideas FIT y valores nutricionales orientativos en Sazón y Punto.">
+<style>
+:root{--green:#315a43;--green2:#e7efe7;--cream:#fbf8f1;--ink:#242a25;--muted:#667168;--orange:#d97845;--white:#fff;--line:#e6e4dc}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+header{background:var(--green);color:white;padding:26px 18px 22px} .wrap{max-width:980px;margin:auto}
+.brand{font-family:Georgia,serif;font-size:clamp(30px,7vw,48px);font-weight:700;letter-spacing:-1px;margin:0}
+.tagline{margin:5px 0 18px;color:#e7eee7}.hero{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.hero p{max-width:560px;margin:0;color:#f2f5f0}.hero-badge{border:1px solid #a7c1ac;border-radius:999px;padding:8px 12px;font-size:13px}
+main{padding:22px 16px 48px}.intro h2{font-family:Georgia,serif;font-size:27px;margin:0 0 5px}.intro p{margin:0;color:var(--muted)}
+.controls{margin:20px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+input,select,button{font:inherit}input,select{width:100%;padding:12px 13px;border:1px solid #d8ded6;border-radius:12px;background:white;color:var(--ink)}
+.filters{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px}
+.chip{border:1px solid #cfd9cf;background:white;color:var(--green);padding:9px 14px;border-radius:999px;white-space:nowrap;cursor:pointer}
+.chip.active{background:var(--green);color:white;border-color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.card{background:white;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;min-width:0;box-shadow:0 4px 14px #253d2b08}
+.food{height:126px;display:grid;place-items:center;font-size:54px;background:linear-gradient(135deg,#edf2e8,#f5e4d4)}
+.card-body{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.kicker{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+.card h3{font-size:18px;line-height:1.2;margin:0}
+.meta{font-size:13px;color:var(--muted)}.macro{display:flex;gap:6px;flex-wrap:wrap;font-size:11px;color:#435248}
+.macro span{background:#f0f4ef;border-radius:7px;padding:4px 6px}
+.actions{display:flex;gap:8px;margin-top:auto;padding-top:4px}
+.btn{border:0;border-radius:10px;padding:10px 12px;cursor:pointer;font-weight:650}
+.primary{background:var(--green);color:white;flex:1}.secondary{background:var(--green2);color:var(--green)}
+.note{margin:20px 0 0;background:#fff7e9;border:1px solid #f0dfbf;padding:13px 15px;border-radius:12px;font-size:13px;color:#685536}
+footer{text-align:center;padding:22px 15px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+dialog{border:0;border-radius:20px;padding:0;width:min(620px,calc(100% - 24px));max-height:88vh;overflow:auto;box-shadow:0 20px 70px #0004}
+dialog::backdrop{background:#14201699}.modal{padding:22px}.modal-top{display:flex;justify-content:space-between;gap:12px;align-items:start}.modal h2{font-family:Georgia,serif;margin:0 0 8px;font-size:27px}.close{border:0;background:#eef2ec;border-radius:50%;width:38px;height:38px;font-size:20px}
+.modal h3{margin:18px 0 7px}.modal ul,.modal ol{padding-left:22px}.nutri{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:14px 0}.nutri div{background:#eef3ec;padding:10px 7px;border-radius:10px;text-align:center}.nutri strong{display:block;font-size:18px}.nutri small{color:var(--muted)}
+.empty{padding:30px;text-align:center;color:var(--muted);grid-column:1/-1}
+@media(max-width:680px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.food{height:105px}.card-body{padding:11px}.card h3{font-size:16px}.controls{grid-template-columns:1fr}.brand{font-size:36px}}
+@media(max-width:390px){.grid{grid-template-columns:1fr}.food{height:130px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="hero"><div><p class="tagline">RECETAS RICAS, SIN COMPLICACIONES</p><h1 class="brand">Sazón y Punto</h1></div><span class="hero-badge">Casero · Variado · FIT</span></div>
+  <div class="hero" style="margin-top:12px"><p>Ideas para cada día: platos de siempre, recetas rápidas y opciones FIT con información nutricional orientativa.</p></div>
+</div></header>
+<main class="wrap">
+  <section class="intro"><h2>¿Qué te apetece cocinar?</h2><p>Busca por nombre o encuentra algo rico por categoría.</p></section>
+  <div class="controls">
+    <input id="search" type="search" placeholder="🔎 Buscar receta o ingrediente…" aria-label="Buscar recetas">
+    <select id="sort" aria-label="Ordenar recetas"><option value="default">Ordenar: recomendadas</option><option value="calories">Menos calorías por ración</option><option value="protein">Más proteínas por ración</option><option value="time">Menor tiempo</option></select>
+  </div>
+  <nav class="filters" aria-label="Categorías">
+    <button class="chip active" data-cat="Todas">Todas</button><button class="chip" data-cat="Desayunos">Desayunos</button><button class="chip" data-cat="Comidas">Comidas</button><button class="chip" data-cat="Cenas">Cenas</button><button class="chip" data-cat="Postres">Postres</button><button class="chip" data-cat="FIT">Zona FIT</button><button class="chip" data-cat="Favoritos">♥ Favoritos</button>
+  </nav>
+  <section id="recipes" class="grid" aria-live="polite"></section>
+  <p class="note"><strong>Nota nutricional:</strong> los valores mostrados son estimaciones de ejemplo, no análisis de laboratorio. Pueden variar según la marca, el peso crudo/cocinado y la preparación. Verifica los datos antes de utilizarlos para objetivos médicos o dietéticos.</p>
+</main>
+<footer><strong>Sazón y Punto</strong> · Recetas para compartir<br>Proyecto inicial gratuito · Los favoritos se guardan en este navegador.</footer>
+<dialog id="recipeDialog"><div class="modal" id="modalContent"></div></dialog>
+<script>
+const recipes = [
+{id:1,name:"Avena cremosa con plátano",cat:"Desayunos",fit:true,emoji:"🥣",time:10,servings:1,cal:345,p:12,c:58,f:8,ingredients:["50 g de copos de avena","200 ml de leche o bebida vegetal","1 plátano pequeño","Canela al gusto"],steps:["Calienta la leche en un cazo o en el microondas.","Añade la avena y remueve hasta que espese.","Sirve con el plátano en rodajas y canela."],desc:"Un desayuno sencillo y saciante."},
+{id:2,name:"Tostadas con tomate y huevo",cat:"Desayunos",fit:true,emoji:"🍳",time:12,servings:1,cal:310,p:16,c:34,f:11,ingredients:["2 rebanadas de pan integral (70 g)","1 huevo","1 tomate mediano","1 cucharadita de aceite de oliva","Sal y pimienta"],steps:["Tuesta el pan.","Ralla el tomate y repártelo sobre las tostadas.","Prepara el huevo a tu gusto y colócalo encima.","Añade el aceite y condimenta."],desc:"Una opción salada para empezar el día."},
+{id:3,name:"Pollo con arroz y verduras",cat:"Comidas",fit:true,emoji:"🍗",time:30,servings:1,cal:480,p:39,c:57,f:10,ingredients:["150 g de pechuga de pollo","60 g de arroz en seco","150 g de verduras variadas","1 cucharadita de aceite de oliva","Ajo, pimienta y pimentón"],steps:["Cuece el arroz siguiendo las indicaciones del paquete.","Corta el pollo en dados y sazona.","Saltea las verduras con el aceite y cocina el pollo hasta que esté bien hecho.","Sirve con el arroz."],desc:"Un plato completo que puedes adaptar con tus verduras favoritas."},
+{id:4,name:"Lentejas caseras",cat:"Comidas",fit:false,emoji:"🥘",time:45,servings:4,cal:390,p:22,c:54,f:9,ingredients:["300 g de lentejas secas","1 zanahoria","1 cebolla","1 pimiento","2 cucharadas de aceite de oliva","1 hoja de laurel y pimentón"],steps:["Lava las lentejas y prepara las verduras.","Pon todos los ingredientes en una olla con agua suficiente.","Cuece a fuego suave hasta que las lentejas estén tiernas; añade agua si hace falta.","Ajusta la sal y sirve."],desc:"Un clásico de cuchara para compartir."},
+{id:5,name:"Ensalada de garbanzos",cat:"Comidas",fit:true,emoji:"🥗",time:15,servings:2,cal:360,p:16,c:43,f:13,ingredients:["300 g de garbanzos cocidos escurridos","1 tomate","½ pepino","½ cebolla morada","1 cucharada de aceite de oliva","Limón, perejil y sal"],steps:["Enjuaga y escurre los garbanzos.","Trocea las verduras y mezcla todo en un bol.","Aliña con aceite, limón, perejil y sal."],desc:"Fresca, rápida y fácil de preparar con antelación."},
+{id:6,name:"Salmón al horno con patata",cat:"Cenas",fit:true,emoji:"🐟",time:25,servings:1,cal:440,p:32,c:35,f:19,ingredients:["150 g de salmón","200 g de patata","1 cucharadita de aceite de oliva","Limón, pimienta y eneldo"],steps:["Precalienta el horno a 200 °C.","Corta la patata en rodajas finas y hornea con el aceite durante unos 15 minutos.","Añade el salmón condimentado y hornea hasta que esté hecho."],desc:"Cena sabrosa con pescado y guarnición."},
+{id:7,name:"Tortilla de calabacín",cat:"Cenas",fit:true,emoji:"🍳",time:20,servings:2,cal:230,p:14,c:8,f:15,ingredients:["3 huevos","1 calabacín mediano","½ cebolla (opcional)","1 cucharadita de aceite de oliva","Sal y pimienta"],steps:["Corta el calabacín y la cebolla en trozos pequeños.","Cocínalos en una sartén con el aceite hasta que estén tiernos.","Bate los huevos, mezcla con las verduras y cuaja la tortilla."],desc:"Una cena sencilla que también funciona como tapa."},
+{id:8,name:"Bizcocho de yogur",cat:"Postres",fit:false,emoji:"🍰",time:40,servings:8,cal:260,p:5,c:36,f:10,ingredients:["1 yogur natural (125 g)","3 huevos","2 medidas de yogur de azúcar","3 medidas de yogur de harina","1 medida de yogur de aceite suave","1 sobre de levadura"],steps:["Precalienta el horno a 180 °C.","Mezcla el yogur, los huevos y el azúcar.","Incorpora harina, levadura y aceite hasta obtener una masa homogénea.","Vierte en un molde y hornea unos 30–35 minutos, comprobando con un palillo."],desc:"El bizcocho de siempre para meriendas."},
+{id:9,name:"Vasitos de yogur y frutos rojos",cat:"Postres",fit:true,emoji:"🍓",time:5,servings:1,cal:190,p:14,c:24,f:4,ingredients:["170 g de yogur natural alto en proteína","100 g de frutos rojos","15 g de granola","1 cucharadita de miel (opcional)"],steps:["Pon el yogur en un vaso o cuenco.","Añade los frutos rojos lavados.","Termina con granola y, si quieres, un poco de miel."],desc:"Un postre rápido con fruta y textura crujiente."},
+{id:10,name:"Pasta con tomate y atún",cat:"Comidas",fit:false,emoji:"🍝",time:20,servings:2,cal:430,p:26,c:59,f:9,ingredients:["160 g de pasta en seco","1 lata de atún escurrido","200 g de tomate triturado","1 cucharadita de aceite de oliva","Orégano y ajo"],steps:["Cuece la pasta según el paquete.","Calienta el aceite con el ajo y añade el tomate y el orégano.","Incorpora el atún escurrido y cocina unos minutos.","Mezcla con la pasta y sirve."],desc:"Una comida rápida con ingredientes habituales."},
+{id:11,name:"Crema de calabaza",cat:"Cenas",fit:true,emoji:"🎃",time:30,servings:3,cal:165,p:4,c:25,f:6,ingredients:["500 g de calabaza","1 zanahoria","½ cebolla","1 cucharadita de aceite de oliva","Agua o caldo y pimienta"],steps:["Trocea la calabaza, la zanahoria y la cebolla.","Rehoga la cebolla con el aceite y añade el resto de verduras.","Cubre con agua o caldo y cuece hasta que esté tierno.","Tritura y ajusta la textura."],desc:"Una crema suave para una cena reconfortante."},
+{id:12,name:"Tortitas de avena y plátano",cat:"Desayunos",fit:true,emoji:"🥞",time:15,servings:1,cal:330,p:15,c:48,f:9,ingredients:["1 plátano mediano","1 huevo","40 g de avena molida","½ cucharadita de levadura","Canela"],steps:["Chafa el plátano y mézclalo con el huevo.","Añade la avena, la levadura y la canela.","Vierte pequeñas porciones en una sartén antiadherente y cocina por ambos lados."],desc:"Tortitas sin complicaciones para el desayuno."}
+];
+let category="Todas";
+let favorites=JSON.parse(localStorage.getItem("syp-favorites")||"[]");
+const $=s=>document.querySelector(s);
+function visibleRecipes(){
+ let list=recipes.filter(r=>{
+  const q=$("#search").value.trim().toLocaleLowerCase("es");
+  const matchesQ=(r.name+" "+r.cat+" "+r.ingredients.join(" ")).toLocaleLowerCase("es").includes(q);
+  const matchesCat=category==="Todas"||(category==="FIT"?r.fit:category==="Favoritos"?favorites.includes(r.id):r.cat===category);
+  return matchesQ&&matchesCat;
+ });
+ const sort=$("#sort").value;
+ if(sort==="calories")list.sort((a,b)=>a.cal-b.cal);
+ if(sort==="protein")list.sort((a,b)=>b.p-a.p);
+ if(sort==="time")list.sort((a,b)=>a.time-b.time);
+ return list;
+}
+function render(){
+ const list=visibleRecipes(), root=$("#recipes");
+ root.innerHTML="";
+ if(!list.length){root.innerHTML='<div class="empty">No encontramos recetas con esos filtros. Prueba otra búsqueda.</div>';return}
+ list.forEach(r=>{
+  const el=document.createElement("article");el.className="card";
+  el.innerHTML=`<div class="food" aria-hidden="true">${r.emoji}</div><div class="card-body"><div class="kicker">${r.fit?"Zona FIT":r.cat}</div><h3>${r.name}</h3><div class="meta">⏱ ${r.time} min · ${r.cal} kcal/ración*</div><div class="macro"><span>Proteína ${r.p} g</span><span>Hidratos ${r.c} g</span><span>Grasas ${r.f} g</span></div><div class="actions"><button class="btn primary" data-open="${r.id}">Ver receta</button><button class="btn secondary" aria-label="Guardar favorito" data-fav="${r.id}">${favorites.includes(r.id)?"♥":"♡"}</button></div></div>`;
+  root.appendChild(el);
+ });
+}
+function openRecipe(id){
+ const r=recipes.find(x=>x.id===id);if(!r)return;
+ $("#modalContent").innerHTML=`<div class="modal-top"><div><div class="kicker">${r.fit?"Zona FIT":r.cat} · ${r.time} min</div><h2>${r.emoji} ${r.name}</h2><p>${r.desc}</p></div><button class="close" aria-label="Cerrar">×</button></div><div class="nutri"><div><strong>${r.cal}</strong><small>kcal*</small></div><div><strong>${r.p} g</strong><small>Proteínas*</small></div><div><strong>${r.c} g</strong><small>Hidratos*</small></div><div><strong>${r.f} g</strong><small>Grasas*</small></div></div><p class="meta">Valores orientativos por ración. Receta base para ${r.servings} ${r.servings===1?"ración":"raciones"}.</p><h3>Ingredientes</h3><ul>${r.ingredients.map(x=>`<li>${x}</li>`).join("")}</ul><h3>Preparación</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join("")}</ol><p class="note">*Estimaciones de ejemplo. Comprueba los ingredientes, cantidades y marcas para obtener un cálculo preciso.</p><button class="btn primary" id="modalFav">${favorites.includes(r.id)?"Quitar de favoritos":"Guardar en favoritos"}</button>`;
+ const dlg=$("#recipeDialog");dlg.showModal();
+ $(".close").onclick=()=>dlg.close();
+ $("#modalFav").onclick=()=>{toggleFav(r.id);$("#modalFav").textContent=favorites.includes(r.id)?"Quitar de favoritos":"Guardar en favoritos";};
+}
+function toggleFav(id){favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id];localStorage.setItem("syp-favorites",JSON.stringify(favorites));render();}
+$("#search").addEventListener("input",render);$("#sort").addEventListener("change",render);
+document.querySelectorAll("[data-cat]").forEach(b=>b.addEventListener("click",()=>{category=b.dataset.cat;document.querySelectorAll("[data-cat]").forEach(x=>x.classList.toggle("active",x===b));render();}));
+$("#recipes").addEventListener("click",e=>{const open=e.target.closest("[data-open]"),fav=e.target.closest("[data-fav]");if(open)openRecipe(Number(open.dataset.open));if(fav)toggleFav(Number(fav.dataset.fav));});
+$("#recipeDialog").addEventListener("click",e=>{if(e.target===$("#recipeDialog"))$("#recipeDialog").close()});
+render();
+</script>
+</body>
+</html>
